@@ -1,119 +1,129 @@
-lib/
-├── main.dart
-├── app/                          # App-level configuration
-│   ├── app.dart                  # Main app widget
-│   ├── routes/                   # Route definitions
-│   │   ├── app_routes.dart
-│   │   └── route_names.dart
-│   └── themes/                   # App themes
-│       ├── app_theme.dart
-│       ├── light_theme.dart
-│       └── dark_theme.dart
-├── core/                         # Core functionality
-│   ├── constants/                # App constants
-│   │   ├── api_constants.dart
-│   │   ├── app_constants.dart
-│   │   └── storage_constants.dart
-│   ├── errors/                   # Error handling
-│   │   ├── exceptions.dart
-│   │   ├── failures.dart
-│   │   └── error_handler.dart
-│   ├── network/                  # Network layer
-│   │   ├── api_client.dart
-│   │   ├── dio_client.dart
-│   │   ├── interceptors/
-│   │   │   ├── auth_interceptor.dart
-│   │   │   ├── logging_interceptor.dart
-│   │   │   └── error_interceptor.dart
-│   │   └── network_info.dart
-│   ├── services/                 # Core services
-│   │   ├── storage_service.dart
-│   │   ├── notification_service.dart
-│   │   └── dependency_injection.dart
-│   └── utils/                    # Core utilities
-│       ├── validators.dart
-│       ├── formatters.dart
-│       ├── extensions.dart
-│       └── helpers.dart
-├── shared/                       # Shared components
-│   ├── widgets/                  # Reusable widgets
-│   │   ├── common/
-│   │   │   ├── custom_button.dart
-│   │   │   ├── custom_text_field.dart
-│   │   │   ├── loading_widget.dart
-│   │   │   └── error_widget.dart
-│   │   └── inputs/
-│   │       ├── form_field_wrapper.dart
-│   │       └── custom_dropdown.dart
-│   └── models/                   # Shared data models
-│       ├── base_model.dart
-│       └── response_model.dart
-├── features/                     # Feature-based organization
-│   ├── auth/
-│   │   ├── data/
-│   │   │   ├── datasources/
-│   │   │   │   ├── auth_local_datasource.dart
-│   │   │   │   └── auth_remote_datasource.dart
-│   │   │   ├── models/
-│   │   │   │   ├── auth_model.dart
-│   │   │   │   ├── user_model.dart
-│   │   │   │   └── login_response_model.dart
-│   │   │   └── repositories/
-│   │   │       └── auth_repository_impl.dart
-│   │   ├── domain/
-│   │   │   ├── entities/
-│   │   │   │   ├── user_entity.dart
-│   │   │   │   └── auth_entity.dart
-│   │   │   ├── repositories/
-│   │   │   │   └── auth_repository.dart
-│   │   │   └── usecases/
-│   │   │       ├── login_usecase.dart
-│   │   │       ├── logout_usecase.dart
-│   │   │       ├── register_usecase.dart
-│   │   │       └── get_current_user_usecase.dart
-│   │   └── presentation/
-│   │       ├── providers/
-│   │       │   └── auth_provider.dart
-│   │       ├── screens/
-│   │       │   ├── login_screen.dart
-│   │       │   ├── register_screen.dart
-│   │       │   └── profile_screen.dart
-│   │       └── widgets/
-│   │           ├── auth_form_field.dart
-│   │           └── social_login_buttons.dart
-│   └── todos/
-│       ├── data/
-│       │   ├── datasources/
-│       │   │   ├── todo_local_datasource.dart
-│       │   │   └── todo_remote_datasource.dart
-│       │   ├── models/
-│       │   │   ├── todo_model.dart
-│       │   │   └── todo_response_model.dart
-│       │   └── repositories/
-│       │       └── todo_repository_impl.dart
-│       ├── domain/
-│       │   ├── entities/
-│       │   │   └── todo_entity.dart
-│       │   ├── repositories/
-│       │   │   └── todo_repository.dart
-│       │   └── usecases/
-│       │       ├── get_todos_usecase.dart
-│       │       ├── create_todo_usecase.dart
-│       │       ├── update_todo_usecase.dart
-│       │       └── delete_todo_usecase.dart
-│       └── presentation/
-│           ├── providers/
-│           │   └── todo_provider.dart
-│           ├── screens/
-│           │   ├── todo_list_screen.dart
-│           │   ├── todo_detail_screen.dart
-│           │   └── add_todo_screen.dart
-│           └── widgets/
-│               ├── todo_item_widget.dart
-│               ├── todo_form_widget.dart
-│               └── todo_filter_widget.dart
-└── l10n/                         # Internationalization (optional)
-    ├── app_localizations.dart
-    └── arb/
-        ├── app_en.arb
-        └── app_es.arb
+# Project Structure Overview
+
+This document outlines the folder structure of a Flutter project, organized following clean architecture principles. The structure is designed to promote modularity, scalability, and maintainability by separating concerns into distinct layers: app configuration, core functionality, shared components, feature-specific modules, and internationalization.
+
+## Directory Structure
+
+- **lib/**: Root directory for the application's source code.
+  - **main.dart**: Entry point of the Flutter application.
+  - **app/**: Contains app-level configuration and setup.
+    - **app.dart**: Defines the main app widget.
+    - **routes/**: Manages navigation routes.
+      - **app_routes.dart**: Defines route configurations.
+      - **route_names.dart**: Contains route name constants.
+    - **themes/**: Manages app theming.
+      - **app_theme.dart**: Base theme configuration.
+      - **light_theme.dart**: Light theme implementation.
+      - **dark_theme.dart**: Dark theme implementation.
+  - **core/**: Core functionality shared across the app.
+    - **constants/**: Stores constant values.
+      - **api_constants.dart**: API-related constants (e.g., endpoints).
+      - **app_constants.dart**: General app constants.
+      - **storage_constants.dart**: Storage-related constants.
+    - **errors/**: Handles error management.
+      - **exceptions.dart**: Custom exception classes.
+      - **failures.dart**: Failure models for error handling.
+      - **error_handler.dart**: Centralized error handling logic.
+    - **network/**: Manages network operations.
+      - **api_client.dart**: Base API client configuration.
+      - **dio_client.dart**: Dio-specific HTTP client setup.
+      - **interceptors/**: Custom Dio interceptors.
+        - **auth_interceptor.dart**: Handles authentication headers.
+        - **logging_interceptor.dart**: Logs network requests/responses.
+        - **error_interceptor.dart**: Manages network errors.
+      - **network_info.dart**: Checks network connectivity status.
+    - **services/**: Core services for app functionality.
+      - **storage_service.dart**: Manages local storage operations.
+      - **notification_service.dart**: Handles push notifications.
+      - **dependency_injection.dart**: Configures dependency injection.
+    - **utils/**: Utility functions and helpers.
+      - **validators.dart**: Input validation logic.
+      - **formatters.dart**: Data formatting utilities.
+      - **extensions.dart**: Dart extension methods.
+      - **helpers.dart**: Miscellaneous helper functions.
+  - **shared/**: Reusable components across features.
+    - **widgets/**: Reusable UI components.
+      - **common/**: General-purpose widgets.
+        - **custom_button.dart**: Custom button widget.
+        - **custom_text_field.dart**: Custom text input field.
+        - **loading_widget.dart**: Loading indicator widget.
+        - **error_widget.dart**: Error display widget.
+      - **inputs/**: Form input widgets.
+        - **form_field_wrapper.dart**: Wrapper for form fields.
+        - **custom_dropdown.dart**: Custom dropdown widget.
+    - **models/**: Shared data models.
+      - **base_model.dart**: Base model for data classes.
+      - **response_model.dart**: Generic response model.
+  - **features/**: Feature-specific modules following clean architecture.
+    - **auth/**: Authentication feature module.
+      - **data/**: Data layer for authentication.
+        - **datasources/**: Data sources for authentication.
+          - **auth_local_datasource.dart**: Local storage for auth data.
+          - **auth_remote_datasource.dart**: Remote API for auth data.
+        - **models/**: Authentication data models.
+          - **auth_model.dart**: Authentication model.
+          - **user_model.dart**: User data model.
+          - **login_response_model.dart**: Login response model.
+        - **repositories/**: Data repository implementations.
+          - **auth_repository_impl.dart**: Authentication repository.
+      - **domain/**: Business logic for authentication.
+        - **entities/**: Business entities.
+          - **user_entity.dart**: User entity.
+          - **auth_entity.dart**: Authentication entity.
+        - **repositories/**: Repository interfaces.
+          - **auth_repository.dart**: Authentication repository interface.
+        - **usecases/**: Use case implementations.
+          - **login_usecase.dart**: Login use case.
+          - **logout_usecase.dart**: Logout use case.
+          - **register_usecase.dart**: Register use case.
+          - **get_current_user_usecase.dart**: Fetch current user use case.
+      - **presentation/**: UI layer for authentication.
+        - **providers/**: State management providers.
+          - **auth_provider.dart**: Authentication state provider.
+        - **screens/**: Authentication screens.
+          - **login_screen.dart**: Login UI screen.
+          - **register_screen.dart**: Registration UI screen.
+          - **profile_screen.dart**: User profile UI screen.
+        - **widgets/**: Authentication-specific widgets.
+          - **auth_form_field.dart**: Custom form field for auth.
+          - **social_login_buttons.dart**: Social login buttons.
+    - **todos/**: Todo feature module.
+      - **data/**: Data layer for todos.
+        - **datasources/**: Data sources for todos.
+          - **todo_local_datasource.dart**: Local storage for todos.
+          - **todo_remote_datasource.dart**: Remote API for todos.
+        - **models/**: Todo data models.
+          - **todo_model.dart**: Todo data model.
+          - **todo_response_model.dart**: Todo response model.
+        - **repositories/**: Data repository implementations.
+          - **todo_repository_impl.dart**: Todo repository.
+      - **domain/**: Business logic for todos.
+        - **entities/**: Business entities.
+          - **todo_entity.dart**: Todo entity.
+        - **repositories/**: Repository interfaces.
+          - **todo_repository.dart**: Todo repository interface.
+        - **usecases/**: Use case implementations.
+          - **get_todos_usecase.dart**: Fetch todos use case.
+          - **create_todo_usecase.dart**: Create todo use case.
+          - **update_todo_usecase.dart**: Update todo use case.
+          - **delete_todo_usecase.dart**: Delete todo use case.
+      - **presentation/**: UI layer for todos.
+        - **providers/**: State management providers.
+          - **todo_provider.dart**: Todo state provider.
+        - **screens/**: Todo screens.
+          - **todo_list_screen.dart**: Todo list UI screen.
+          - **todo_detail_screen.dart**: Todo detail UI screen.
+          - **add_todo_screen.dart**: Add todo UI screen.
+        - **widgets/**: Todo-specific widgets.
+          - **todo_item_widget.dart**: Todo item display widget.
+          - **todo_form_widget.dart**: Todo form input widget.
+          - **todo_filter_widget.dart**: Todo filter widget.
+  - **l10n/**: Internationalization and localization (optional).
+    - **app_localizations.dart**: Localization setup.
+    - **arb/**: Localization resource files.
+      - **app_en.arb**: English localization strings.
+      - **app_es.arb**: Spanish localization strings.
+
+## Purpose
+
+This structure organizes the codebase into modular components, separating concerns for better scalability and maintainability. The **core** directory houses shared utilities and services, while **features** encapsulate independent modules (e.g., auth, todos) with their own data, domain, and presentation layers. The **shared** directory provides reusable widgets and models, and **l10n** supports multi-language functionality.
